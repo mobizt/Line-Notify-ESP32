@@ -256,6 +256,7 @@ uint8_t LineNotifyESP32::sendLineImageData(HTTPClientESP32Ex &http, const char* 
         imageData += chunkSize;
         byteRead = imageLength;
       }
+      yield();
     }
 
 
@@ -390,6 +391,7 @@ uint8_t LineNotifyESP32::sendLineImageSPIF(HTTPClientESP32Ex &http, const char* 
           byteRead = imageLength;
           break;
         }
+        yield();
       }
 
       file.close();
