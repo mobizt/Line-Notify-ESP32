@@ -50,35 +50,70 @@ void setup() {
   lineNotify.init(LINE_TOKEN);
 
   uint8_t status;
-
+  
   status =  lineNotify.sendLineMessage(http, "Hello!");
-  if (status == LineNotifyESP32::LineStatus::SENT_COMPLETED) Serial.println("Send text message completed");
+  if (status == LineNotifyESP32::LineStatus::SENT_COMPLETED) {
+    Serial.println("Send text message completed");
+    Serial.println("Text message limit: " + String(lineNotify.textMessageLimit()));
+    Serial.println("Text message remaining: " + String(lineNotify.textMessageRemaining()));
+    Serial.println("Image message limit: " + String(lineNotify.imageMessageLimit()));
+    Serial.println("Image message remaining: " + String(lineNotify.imageMessageRemaining()));
+  }
   else if (status == LineNotifyESP32::LineStatus::SENT_FAILED) Serial.println("Send text message was failed!");
   else if (status == LineNotifyESP32::LineStatus::CONNECTION_FAILED) Serial.println("Connection to LINE sevice faild!");
+  Serial.println();
 
 
   status = lineNotify.sendLineImageData(http, "This is the image from memory", "image.jpg", dummyImageData, sizeof(dummyImageData));
-  if (status == LineNotifyESP32::LineStatus::SENT_COMPLETED) Serial.println("send image data completed");
+  if (status == LineNotifyESP32::LineStatus::SENT_COMPLETED) {
+    Serial.println("send image data completed");
+    Serial.println("Text message limit: " + String(lineNotify.textMessageLimit()));
+    Serial.println("Text message remaining: " + String(lineNotify.textMessageRemaining()));
+    Serial.println("Image message limit: " + String(lineNotify.imageMessageLimit()));
+    Serial.println("Image message remaining: " + String(lineNotify.imageMessageRemaining()));
+  }
   else if (status == LineNotifyESP32::LineStatus::SENT_FAILED) Serial.println("Send image data was failed!");
   else if (status == LineNotifyESP32::LineStatus::CONNECTION_FAILED) Serial.println("Connection to LINE sevice faild!");
+  Serial.println();
 
 
   status = lineNotify.sendLineSticker(http, "Goodbye", 2, 157);
-  if (status == LineNotifyESP32::LineStatus::SENT_COMPLETED) Serial.println("Send sticker completed");
+  if (status == LineNotifyESP32::LineStatus::SENT_COMPLETED) {
+    Serial.println("Send sticker completed");
+    Serial.println("Text message limit: " + String(lineNotify.textMessageLimit()));
+    Serial.println("Text message remaining: " + String(lineNotify.textMessageRemaining()));
+    Serial.println("Image message limit: " + String(lineNotify.imageMessageLimit()));
+    Serial.println("Image message remaining: " + String(lineNotify.imageMessageRemaining()));
+  }
   else if (status == LineNotifyESP32::LineStatus::SENT_FAILED) Serial.println("Send sticker was failed!");
   else if (status == LineNotifyESP32::LineStatus::CONNECTION_FAILED) Serial.println("Connection to LINE sevice faild!");
+  Serial.println();
 
 
   status = lineNotify.sendLineImageURL(http, "This is image I found on web.", "https://cdn.pixabay.com/photo/2017/05/17/18/35/sewing-2321532_640.jpg");
-  if (status == LineNotifyESP32::LineStatus::SENT_COMPLETED) Serial.println("Send image URL completed");
+  if (status == LineNotifyESP32::LineStatus::SENT_COMPLETED) {
+    Serial.println("Send image URL completed");
+    Serial.println("Text message limit: " + String(lineNotify.textMessageLimit()));
+    Serial.println("Text message remaining: " + String(lineNotify.textMessageRemaining()));
+    Serial.println("Image message limit: " + String(lineNotify.imageMessageLimit()));
+    Serial.println("Image message remaining: " + String(lineNotify.imageMessageRemaining()));
+  }
   else if (status == LineNotifyESP32::LineStatus::SENT_FAILED) Serial.println("Send image URL failed!");
   else if (status == LineNotifyESP32::LineStatus::CONNECTION_FAILED) Serial.println("Connection to LINE sevice faild!");
+  Serial.println();
 
 
   status = lineNotify.sendLineImageSPIF(http, "This image from device", "/sewing.jpg");
-  if (status == LineNotifyESP32::LineStatus::SENT_COMPLETED) Serial.println("Send image from SPIFS file completed");
+  if (status == LineNotifyESP32::LineStatus::SENT_COMPLETED) {
+    Serial.println("Send image from SPIFS file completed");
+    Serial.println("Text message limit: " + String(lineNotify.textMessageLimit()));
+    Serial.println("Text message remaining: " + String(lineNotify.textMessageRemaining()));
+    Serial.println("Image message limit: " + String(lineNotify.imageMessageLimit()));
+    Serial.println("Image message remaining: " + String(lineNotify.imageMessageRemaining()));
+  }
   else if (status == LineNotifyESP32::LineStatus::SENT_FAILED) Serial.println("Send image from SPIFS was failed!");
   else if (status == LineNotifyESP32::LineStatus::CONNECTION_FAILED) Serial.println("Connection to LINE sevice faild!");
+  Serial.println();
 
 
 }
