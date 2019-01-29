@@ -45,8 +45,6 @@ void setup() {
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
 
-
-
   lineNotify.init(LINE_TOKEN);
 
   uint8_t status;
