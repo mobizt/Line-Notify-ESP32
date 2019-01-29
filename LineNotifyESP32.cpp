@@ -484,8 +484,8 @@ bool LineNotifyESP32::waitLineResponse(HTTPClientESP32Ex &http) {
               //Parses for headers and payload
               if (strpos(response, "X-RateLimit-Limit", 0) != -1) _textLimit = atoi(res);
               else if (strpos(response, "X-RateLimit-ImageLimit", 0) != -1) _imageLimit = atoi(res);
-			  else if (strpos(response, "X-RateLimit-Remaining", 0) != -1) _textRemaining = atoi(res);
-			  else if (strpos(response, "X-RateLimit-ImageRemaining", 0) != -1) _imageRemaining = atoi(res);
+              else if (strpos(response, "X-RateLimit-Remaining", 0) != -1) _textRemaining = atoi(res);
+	      else if (strpos(response, "X-RateLimit-ImageRemaining", 0) != -1) _imageRemaining = atoi(res);
 
             }
           }
