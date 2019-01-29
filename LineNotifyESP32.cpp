@@ -389,8 +389,8 @@ uint8_t LineNotifyESP32::sendLineImageSPIF(HTTPClientESP32Ex &http, const String
 
 bool LineNotifyESP32::waitLineResponse(HTTPClientESP32Ex &http) {
 
-  char response[100];
-   char res[100];
+  char response[300];
+  char res[300];
   memset(response, 0, sizeof response);
   long dataTime = millis();
 
