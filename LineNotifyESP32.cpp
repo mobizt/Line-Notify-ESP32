@@ -1,4 +1,52 @@
-
+/*
+ * LINE Notify Arduino Library for ESP32
+ *
+ * This library provides ESP32 to perform REST API call to LINE Notify service to post the several message types.
+ *
+ * The library was test and work well with ESP32s based module.
+ * 
+ * The MIT License (MIT)
+ * Copyright (c) 2019 K. Suwatchai (Mobizt)
+ * 
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+ * The MIT License (MIT)
+ * Copyright (c) 2019 K. Suwatchai (Mobizt)
+ * 
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of
+ * this software and associated documentation files (the "Software"), to deal in
+ * the Software without restriction, including without limitation the rights to
+ * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+ * the Software, and to permit persons to whom the Software is furnished to do so,
+ * subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+ * FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+ * COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+ * IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+ * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
 #ifndef LineNotifyESP32_CPP
 #define LineNotifyESP32_CPP
 
@@ -390,7 +438,7 @@ uint8_t LineNotifyESP32::sendLineImageSPIF(HTTPClientESP32Ex &http, const String
 bool LineNotifyESP32::waitLineResponse(HTTPClientESP32Ex &http) {
 
   char response[300];
-  char res[300];
+   char res[300];
   memset(response, 0, sizeof response);
   long dataTime = millis();
 
@@ -399,6 +447,10 @@ bool LineNotifyESP32::waitLineResponse(HTTPClientESP32Ex &http) {
   int p1, p2, len;
 
   int httpCode = -1000;
+  _textLimit = 0;
+  _textRemaining = 0;
+  _imageLimit = 0;
+  _imageRemaining = 0;
 
   WiFiClient* tcp =  http.http_getStreamPtr();
 
@@ -413,6 +465,7 @@ bool LineNotifyESP32::waitLineResponse(HTTPClientESP32Ex &http) {
         strcat_c(response, c);
         count++;
       } else {
+		
         dataTime = millis();
         if (strlen(response) > 0) {
           if (strpos(response, "HTTP/1.1", 0) != -1) {
@@ -421,6 +474,20 @@ bool LineNotifyESP32::waitLineResponse(HTTPClientESP32Ex &http) {
             memset(res, 0, sizeof res);
             strncpy(res, response + p1, len);
             httpCode = atoi(res);
+          } else if (strpos(response, ":", 0) != -1) {
+            p1 = strpos(response, ":", 0);
+            if (p1 < strlen(response) - 1) {
+              len = strlen(response) - p1;
+              memset(res, 0, sizeof res);
+              strncpy(res, response + p1, len);
+
+              //Parses for headers and payload
+              if (strpos(response, "X-RateLimit-Limit", 0) != -1) _textLimit = atoi(res);
+              else if (strpos(response, "X-RateLimit-ImageLimit", 0) != -1) _imageLimit = atoi(res);
+			  else if (strpos(response, "X-RateLimit-Remaining", 0) != -1) _textRemaining = atoi(res);
+			  else if (strpos(response, "X-RateLimit-ImageRemaining", 0) != -1) _imageRemaining = atoi(res);
+
+            }
           }
         }
         memset(response, 0, sizeof response);
@@ -455,6 +522,21 @@ void LineNotifyESP32::getContentType(const char* filename, char *buf) {
   }
 }
 
+uint16_t LineNotifyESP32::textMessageLimit(void){
+  return _textLimit;
+}
+
+uint16_t LineNotifyESP32::textMessageRemaining(void){
+  return _textRemaining;
+}
+
+uint16_t LineNotifyESP32::imageMessageLimit(void){
+  return _imageLimit;
+}
+
+uint16_t LineNotifyESP32::imageMessageRemaining(void){
+  return _imageRemaining;
+}
 
 void LineNotifyESP32::strcat_c (char *str, char c)
 {
