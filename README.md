@@ -144,7 +144,13 @@ https://github.com/mobizt/HTTPClientESP32Ex
 
 
 ```
+## Install
 
+Click on Clone or download dropdown at the top of repository, select Download ZIP and save zip file to your computer.
+
+From Arduino IDE, goto menu Sketch -> Include Library -> Add .ZIP Library... and choose Line-Notify-ESP32-master.zip from last download.
+
+Go to menu Files -> Examples -> Line-Notify-ESP32-master and choose one from examples
 
 ## Usages
 
