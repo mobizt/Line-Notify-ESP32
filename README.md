@@ -20,7 +20,12 @@ Complete Firebase's REST API requests.
 Able send text, sticker and image message to LINE Notify services.
 
 
-**Supported functions**
+## Dependencies
+Required HTTPClientESP32Ex library to be installed. 
+https://github.com/mobizt/HTTPClientESP32Ex
+
+
+## Supported functions
 
 ```c++
    /**
