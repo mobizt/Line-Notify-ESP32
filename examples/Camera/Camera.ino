@@ -60,7 +60,7 @@ void setup() {
   camera_config.pin_reset = 25;
   camera_config.xclk_freq_hz = 10000000;
   camera_config.pixel_format = CAMERA_PF_JPEG;
-  camera_config.frame_size = CAMERA_FS_VGA;
+  camera_config.frame_size = CAMERA_FS_SVGA;
 
   
   cam.init(camera_config);
