@@ -144,7 +144,7 @@ https://github.com/mobizt/HTTPClientESP32Ex
 
 
 ```
-## Install
+## Installing
 
 Click on Clone or download dropdown at the top of repository, select Download ZIP and save zip file to your computer.
 
