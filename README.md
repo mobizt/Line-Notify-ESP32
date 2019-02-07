@@ -4,6 +4,8 @@ This library provides ESP32 to perform REST API call to LINE Notify service to p
 
 The library was test and work well with ESP32s based module.
 
+More about Line Notify service https://notify-bot.line.me/en/
+
 Copyright (c) 2019 K. Suwatchai (Mobizt).
 
 ## Tested Devices
