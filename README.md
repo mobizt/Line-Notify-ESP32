@@ -156,8 +156,4 @@ Go to menu Files -> Examples -> Line-Notify-ESP32-master and choose one from exa
 
 ## Usages
 
-```c++
-
 See the examples
-
-```
