@@ -12,8 +12,9 @@ Copyright (c) 2019 K. Suwatchai (Mobizt).
 
 This library works well in the following tested devices.
 
- * Wemos D1 Mini
- * NodeMCU
+ * Sparkfun ESP32 Thing
+ * NodeMCU-32
+ * WEMOS LOLIN32
  
 ## Features
 
