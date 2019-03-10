@@ -35,9 +35,9 @@ Required HTTPClientESP32Ex library to be installed. https://github.com/mobizt/HT
 
 Click on **Clone or download** dropdown at the top of repository, select **Download ZIP** and save file on your computer.
 
-From Arduino IDE, goto menu **Sketch** -> **Include Library** -> **Add .ZIP Library...** and choose **Firebase-ESP32-master.zip** that previously downloaded.
+From Arduino IDE, goto menu **Sketch** -> **Include Library** -> **Add .ZIP Library...** and choose **Line-Notify-ESP32-master.zip** that previously downloaded.
 
-Go to menu **Files** -> **Examples** -> **Firebase-ESP32-master** and choose one from examples
+Go to menu **Files** -> **Examples** -> **Line-Notify-ESP32-master** and choose one from examples
 
 
 
