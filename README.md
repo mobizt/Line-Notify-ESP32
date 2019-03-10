@@ -77,6 +77,7 @@ void setToken(const String &token);
 **Send text message.**
    
 param *`client`* - SSL WiFi client from WiFiClientSecure initialization.
+
 param *`msg`* - The text message String to be send.
     
 return *`The LineStatus structed value`*, SENT_COMPLETED = 0, SENT_FAILED = 1, CONNECTION_FAILED = 2.
@@ -91,9 +92,12 @@ uint8_t sendLineMessage(HTTPClientESP32Ex &http, const String &msg);
 **Send text message with sticker.**
 
 param *`client`* - SSL WiFi client from WiFiClientSecure initialization.
+
 param *`msg`* - The text message String to be send.
-param *`stickerPackageId`* - Sticker Package ID number to send, see https://devdocs.line.me/files/sticker_list.pdf for STKPKGID
-param *`stickerId`* - Sticker ID number to send, see https://devdocs.line.me/files/sticker_list.pdf for STKID
+
+param *`stickerPackageId`* - Sticker Package ID number to send, see https://devdocs.line.me/files/sticker_list.pdf for STKPKGID.
+
+param *`stickerId`* - Sticker ID number to send, see https://devdocs.line.me/files/sticker_list.pdf for STKID.
 
 return *`The LineStatus structed value`*, SENT_COMPLETED = 0, SENT_FAILED = 1, CONNECTION_FAILED = 2.
 
@@ -107,9 +111,13 @@ uint8_t sendLineSticker(HTTPClientESP32Ex &http, const String &msg, uint16_t sti
 **Send Image message. The image data from flash memory or EEPROM**
 
 param *`client`* - SSL WiFi client from WiFiClientSecure initialization.
+
 param *`msg`* - The text message String to be send.
+
 param *`fileName`* - The user's specified file name String.
+
 param *`imageData`* - The byte data of image from memory or EEPROM.
+
 param *`imageLength`* - The byte length of image data.
 
 return *`The LineStatus structed value`*, SENT_COMPLETED = 0, SENT_FAILED = 1, CONNECTION_FAILED = 2.
@@ -124,7 +132,9 @@ uint8_t sendLineImageData(HTTPClientESP32Ex &http, const String &msg, const Stri
 **Send Image message. The image data from web URL.**
 
 param *`client`* - SSL WiFi client from WiFiClientSecure initialization.
+
 param *`msg`* - The text message String to be send.
+
 param *`imageURL`* - The image URL String.
 
 return *`The LineStatus structed value`*, SENT_COMPLETED = 0, SENT_FAILED = 1, CONNECTION_FAILED = 2.
@@ -139,7 +149,9 @@ uint8_t sendLineImageURL(HTTPClientESP32Ex &http, const String &msg, const Strin
 **Send Image message. The image data from SPI Flash File.**
 
 param *`client`* - SSL WiFi client from WiFiClientSecure initialization.
+
 param *`msg`* - The text message String to be send.
+
 param *`filePath`* - The image file name and path String inside SPIF.
 
 return *`The LineStatus structed value`*, SENT_COMPLETED = 0, SENT_FAILED = 1, CONNECTION_FAILED = 2.
@@ -154,7 +166,9 @@ uint8_t sendLineImageSPIF(HTTPClientESP32Ex &http, const String &msg, const Stri
 **Send Image message. The image data from SD card File.**
 
 param *`client`* - SSL WiFi client from WiFiClientSecure initialization.
+
 param *`msg`* - The text message String to be send.
+
 param *`filePath`* - The image file name and path String inside SD card.
 
 return *`The LineStatus structed value`*, SENT_COMPLETED = 0, SENT_FAILED = 1, CONNECTION_FAILED = 2.
