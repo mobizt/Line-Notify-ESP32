@@ -41,6 +41,7 @@ LineNotifyESP32::~LineNotifyESP32()
   end();
 };
 
+
 void LineNotifyESP32::end()
 {
   std::string().swap(_token);

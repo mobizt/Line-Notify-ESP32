@@ -41,6 +41,7 @@
 #include <SD.h>
 #include <vector>
 
+
 static const char ESP32_LINE_NOTIFY_STR_1[] PROGMEM = "notify-api.line.me";
 static const char ESP32_LINE_NOTIFY_STR_2[] PROGMEM = "{BOUNDARY}";
 static const char ESP32_LINE_NOTIFY_STR_3[] PROGMEM = "ESP32";
