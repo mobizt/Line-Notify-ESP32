@@ -7,6 +7,18 @@ The library was test and work well with ESP32s based module.
 Copyright (c) 2019 K. Suwatchai (Mobizt).
 
 
+
+
+
+## New library is available
+
+The new library for ESP8266 and ESP32 Line Notify is available at
+https://github.com/mobizt/ESP-Line-Notify
+
+
+
+
+
 ## Tested Devices
 
 This following devices were tested and work well.
