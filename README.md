@@ -1,4 +1,4 @@
-# LINE Notify Arduino Library for ESP32 version 1.0.1
+# [DEPRECATED] LINE Notify Arduino Library for ESP32 version 1.0.1
 
 This Arduino library allows ESP32 to send LINE Notify message, sticker, SD card image and camera image.
 
